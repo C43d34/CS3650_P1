@@ -19,8 +19,9 @@ module register_file
       input          [2:0]     reg_read_addr_2,  
       output          [15:0]     reg_read_data_2,  
 
+      output [15:0] reg2,
       output [15:0] reg3,
-      output [15:0] reg4
+      output [15:0] reg1
  );  
       reg     [15:0]     reg_array [7:0];  //8 registers that can hold 16bits of information
       // write port  
@@ -28,8 +29,8 @@ module register_file
       always @ (posedge clk or posedge rst) begin  
            if(rst) begin  
                 reg_array[0] <= 16'b0;  
-                reg_array[1] <= 16'b0100;  
-                reg_array[2] <= 16'b1;  
+                reg_array[1] <= 16'b0100;  //4
+                reg_array[2] <= 16'b1;   //1
                 reg_array[3] <= 16'b0;  
                 reg_array[4] <= 16'b0;  
                 reg_array[5] <= 16'b0;  
@@ -42,10 +43,11 @@ module register_file
                 end  
            end  
       end  
-      assign reg_read_data_1 = ( reg_read_addr_1 == 0)? 16'b0 : reg_array[reg_read_addr_1];  //when read address is 0, we return nothing as read data...
+      assign reg_read_data_1 = ( reg_read_addr_1 == 0)? 16'b0 : reg_array[reg_read_addr_1];  //when read address is 0, we return nothing (Zero) as read data...
       assign reg_read_data_2 = ( reg_read_addr_2 == 0)? 16'b0 : reg_array[reg_read_addr_2];  
-      assign reg3 = reg_array[2];
-      assign reg4 = reg_array[3];
+      assign reg2 = reg_array[2];
+      assign reg3 = reg_array[3];
+      assign reg1 = reg_array[1];
  endmodule
 
 
@@ -207,7 +209,7 @@ endmodule
 //implements the processing of the result within a single clock cycle 
 module mips_16( input clk,reset,  
                            output[15:0] pc_out, alu_result
-                            ,reg3,reg4  
+                            ,reg2,reg3,reg1  
    );  
  reg[15:0] pc_current;  
  wire signed[15:0] pc_next,pc2;  
@@ -261,8 +263,9 @@ module mips_16( input clk,reset,
  .reg_read_data_1(reg_read_data_1),  
  .reg_read_addr_2(reg_read_addr_2),  
  .reg_read_data_2(reg_read_data_2),
- .reg3(reg3),  
- .reg4(reg4));  
+ .reg2(reg2),  
+ .reg3(reg3),
+ .reg1(reg1));  
  // sign extend  
  assign sign_ext_im = {{9{instr[6]}},instr[6:0]};  
  assign zero_ext_im = {{9{1'b0}},instr[6:0]};  

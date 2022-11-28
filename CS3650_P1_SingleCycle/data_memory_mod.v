@@ -17,7 +17,7 @@ module data_memory
       wire [7 : 0] ram_addr = mem_access_addr[8 : 1];  
       initial begin  
            for(i=0;i<256;i=i+1)  
-                ram[i] <= 16'd0;  //initialize all memory cells in ram to 0
+                ram[i] <= 16'd2;  //initialize all memory cells in ram to 2
       end  
       always @(posedge clk) begin  
            if (mem_write_en)  

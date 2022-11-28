@@ -18,15 +18,17 @@
       wire [15:0] alu_result;//,reg3,reg4;  
       // Instantiate the Unit Under Test (UUT)  
 
+      wire [15:0] reg2;
       wire [15:0] reg3;
-      wire [15:0] reg4;
+      wire [15:0] reg1;
       mips_16 uut (  
            .clk(clk),   
            .reset(reset),   
            .pc_out(pc_out),   
            .alu_result(alu_result),  
-           .reg3(reg3),  
-           .reg4(reg4)  
+           .reg2(reg2),  
+           .reg3(reg3),
+           .reg1(reg1)  
       );  
       initial begin  
 
@@ -37,7 +39,7 @@
           $dumpfile("dump.vcd");
           $dumpvars(0, tb_mips16);
         // Initialize Inputs  
-        $monitor ("register 3=%d, register 4=%d", reg3,reg4);  
+        $monitor ("register 2=%d, register 3=%d, register 1=%d", reg2,reg3,reg1);  
         reset = 1;  
         // Wait 100 ns for global reset to finish  
         #100;  
