@@ -37,4 +37,17 @@ Following implementations learned from on the net:
 
 
 
-# Testing Testing
+# 5-Stage Multicycle Implementation 
+
+What we learned from implementing the 5-stage multicycle Implementation:
+- The more complicated the processor gets, the more confusing importing the modules become. 
+- Each step in execution takes 1 clock cycle
+- Functional unit can be used more than once per instruction (must be on different clock cycles)
+- Multicycle reduces the amount of hardware required
+- Multicycle clock cycle seems to accommodate memory access, register file access, ALU operation
+- During the single cycle, instructions are not subdivided. But multicycle is divided into a number of steps. You can see this in both of the implementations that the team has turned in. 
+- Clock cycles seem much shorter than single cycle. 
+- CPI can vary. 
+- No duplicates of hardware needed because instructions are broken into single functional unit steps
+- Slightly faster in performance, but dependant on max no. of cycles.  
+ 
