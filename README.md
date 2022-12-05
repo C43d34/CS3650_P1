@@ -33,3 +33,8 @@ What we learned from implentating this single cycle processor:
 Following implementations learned from on the net:
 - https://www.fpga4student.com/2017/01/verilog-code-for-single-cycle-MIPS-processor.html
 - https://www.fpga4student.com/2017/01/basic-digital-blocks-in-verilog.html
+
+
+
+
+# Testing Testing
