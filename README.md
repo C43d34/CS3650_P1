@@ -50,4 +50,8 @@ What we learned from implementing the 5-stage multicycle Implementation:
 - CPI can vary. 
 - No duplicates of hardware needed because instructions are broken into single functional unit steps
 - Slightly faster in performance, but dependant on max no. of cycles.  
+ Implementations from the net:
+ https://www.fpga4student.com/2017/06/32-bit-pipelined-mips-processor-in-verilog-1.html
+ https://www.fpga4student.com/2017/06/32-bit-pipelined-mips-processor-in-verilog-2.html
+ https://www.fpga4student.com/2017/06/32-bit-pipelined-mips-processor-in-verilog-3.html
  
